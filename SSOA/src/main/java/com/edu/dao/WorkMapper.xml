@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.dao.WorkMapper">
+  <resultMap id="BaseResultMap" type="com.edu.domain.Work">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="createtime" jdbcType="DATE" property="createtime" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="studentid" jdbcType="VARCHAR" property="studentid" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_work
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.edu.domain.Work">
+    insert into t_work (id, type, createtime, 
+      flag, studentid, location
+      )
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{createtime,jdbcType=DATE}, 
+      #{flag,jdbcType=INTEGER}, #{studentid,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.edu.domain.Work">
+    update t_work
+    set type = #{type,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=DATE},
+      flag = #{flag,jdbcType=INTEGER},
+      studentid = #{studentid,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, type, createtime, flag, studentid, location
+    from t_work
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, type, createtime, flag, studentid, location
+    from t_work
+  </select>
+</mapper>

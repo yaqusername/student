@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.dao.StaffMapper">
+  <resultMap id="BaseResultMap" type="com.edu.domain.Staff">
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="departid" jdbcType="INTEGER" property="departid" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="heading" jdbcType="VARCHAR" property="heading" />
+  </resultMap>
+  <insert id="insert" parameterType="com.edu.domain.Staff">
+    insert into t_staff (no, name, departid, 
+      flag, sex, email, qq, 
+      phone, heading)
+    values (#{no,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{departid,jdbcType=INTEGER}, 
+      #{flag,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{heading,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select no, name, departid, flag, sex, email, qq, phone, heading
+    from t_staff
+  </select>
+</mapper>

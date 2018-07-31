@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.dao.LoginlogMapper">
+  <resultMap id="BaseResultMap" type="com.edu.domain.Loginlog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_loginlog
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.edu.domain.Loginlog">
+    insert into t_loginlog (id, ip, no, createtime, 
+      location)
+    values (#{id,jdbcType=BIGINT}, #{ip,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{location,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.edu.domain.Loginlog">
+    update t_loginlog
+    set ip = #{ip,jdbcType=VARCHAR},
+      no = #{no,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      location = #{location,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, ip, no, createtime, location
+    from t_loginlog
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, ip, no, createtime, location
+    from t_loginlog
+  </select>
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.dao.MsgMapper">
+  <resultMap id="BaseResultMap" type="com.edu.domain.Msg">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="tono" jdbcType="VARCHAR" property="tono" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_msg
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.edu.domain.Msg">
+    insert into t_msg (id, type, title, 
+      no, tono, flag, createtime, 
+      content)
+    values (#{id,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{no,jdbcType=VARCHAR}, #{tono,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.edu.domain.Msg">
+    update t_msg
+    set type = #{type,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      no = #{no,jdbcType=VARCHAR},
+      tono = #{tono,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, type, title, no, tono, flag, createtime, content
+    from t_msg
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, type, title, no, tono, flag, createtime, content
+    from t_msg
+  </select>
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.dao.CourseMapper">
+  <resultMap id="BaseResultMap" type="com.edu.domain.Course">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="createtime" jdbcType="DATE" property="createtime" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="week" jdbcType="INTEGER" property="week" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_course
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.edu.domain.Course">
+    insert into t_course (id, name, createtime, 
+      flag, week, type)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{createtime,jdbcType=DATE}, 
+      #{flag,jdbcType=INTEGER}, #{week,jdbcType=INTEGER}, #{type,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.edu.domain.Course">
+    update t_course
+    set name = #{name,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=DATE},
+      flag = #{flag,jdbcType=INTEGER},
+      week = #{week,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, createtime, flag, week, type
+    from t_course
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, createtime, flag, week, type
+    from t_course
+  </select>
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.dao.AddressMapper">
+  <resultMap id="BaseResultMap" type="com.edu.domain.Address">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="provice" jdbcType="VARCHAR" property="provice" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="conuty" jdbcType="VARCHAR" property="conuty" />
+    <result column="detail" jdbcType="INTEGER" property="detail" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="mail" jdbcType="VARCHAR" property="mail" />
+    <result column="no" jdbcType="VARCHAR" property="no" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_address
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.edu.domain.Address">
+    insert into t_address (id, provice, city, 
+      conuty, detail, type, 
+      flag, mail, no)
+    values (#{id,jdbcType=INTEGER}, #{provice,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{conuty,jdbcType=VARCHAR}, #{detail,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
+      #{flag,jdbcType=INTEGER}, #{mail,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.edu.domain.Address">
+    update t_address
+    set provice = #{provice,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      conuty = #{conuty,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=INTEGER},
+      mail = #{mail,jdbcType=VARCHAR},
+      no = #{no,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, provice, city, conuty, detail, type, flag, mail, no
+    from t_address
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, provice, city, conuty, detail, type, flag, mail, no
+    from t_address
+  </select>
+</mapper>

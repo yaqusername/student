@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.dao.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.edu.domain.Student">
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="idcard" jdbcType="VARCHAR" property="idcard" />
+    <result column="schoolname" jdbcType="VARCHAR" property="schoolname" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="phonenum" jdbcType="VARCHAR" property="phonenum" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="classno" jdbcType="VARCHAR" property="classno" />
+    <result column="introno" jdbcType="VARCHAR" property="introno" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+  </resultMap>
+  <insert id="insert" parameterType="com.edu.domain.Student">
+    insert into t_student (no, sex, birthday, 
+      name, idcard, schoolname, 
+      education, phonenum, qq, 
+      classno, introno, flag
+      )
+    values (#{no,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+      #{name,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, #{schoolname,jdbcType=VARCHAR}, 
+      #{education,jdbcType=VARCHAR}, #{phonenum,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, 
+      #{classno,jdbcType=VARCHAR}, #{introno,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select no, sex, birthday, name, idcard, schoolname, education, phonenum, qq, classno, 
+    introno, flag
+    from t_student
+  </select>
+</mapper>
