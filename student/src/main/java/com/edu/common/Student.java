@@ -7,4 +7,6 @@ package com.edu.common;
  */
 public class Student {
     private int id;
+    private int age;
+    private String name;
 }
