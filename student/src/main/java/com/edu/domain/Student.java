@@ -1,4 +1,4 @@
-package com.edu.common;
+package com.edu.domain;
 
 /**
  * @Author Create By 407139407
